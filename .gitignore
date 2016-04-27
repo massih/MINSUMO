@@ -37,6 +37,10 @@ Temporary Items
 
 # COLOGNE Folder
 TAPASCologne-0.24.0/
+
 # Other Projects
 stormTest
+
+#Error logs
+he_err*.log
 

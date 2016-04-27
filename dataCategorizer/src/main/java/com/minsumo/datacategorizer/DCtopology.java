@@ -22,22 +22,22 @@ public class DCtopology {
         TopologyBuilder builder = new TopologyBuilder();
 
         Config conf = new Config();
-        conf.setDebug(true);
+        conf.setDebug(false);
         conf.setMaxTaskParallelism(5);
         //KafkaConfig
-        Broker broker = new Broker("localhost");
+        Broker broker = new Broker("localhost", 9092);
         GlobalPartitionInformation partitionInfo = new GlobalPartitionInformation();
         partitionInfo.addPartition(0,broker);
         StaticHosts staticHosts = new StaticHosts(partitionInfo);
-        //BrokerHosts brokerHosts = new ZkHosts("localhost:2181","/brokers");
-        SpoutConfig spoutConfig = new SpoutConfig(staticHosts, topicName, "/kafkastorm", UUID.randomUUID().toString());
+        SpoutConfig spoutConfig = new SpoutConfig(staticHosts, topicName, "/brokers", UUID.randomUUID().toString());
         spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
         spoutConfig.startOffsetTime = kafka.api.OffsetRequest.LatestTime();
 
-        builder.setSpout("unprocessedSpout", new KafkaSpout(spoutConfig), 1);
-        builder.setBolt("processingVehicleData", new DCbolt(), 1).shuffleGrouping("unprocessedSpout");
+        builder.setSpout("unprocessedKafkaSpout", new KafkaSpout(spoutConfig), 1);
+        builder.setBolt("filteringBolt", new FilteringBolt(), 1).shuffleGrouping("unprocessedKafkaSpout");
+        builder.setBolt("categorizingBolt", new CategorizingBolt(), 1).shuffleGrouping("filteringBolt");
 
         LocalCluster cluster = new LocalCluster();
-        cluster.submitTopology("firstProcess", conf, builder.createTopology());
+        cluster.submitTopology("middlewareLayer", conf, builder.createTopology());
     }
 }

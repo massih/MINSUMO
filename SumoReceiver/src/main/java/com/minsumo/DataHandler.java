@@ -3,6 +3,8 @@ package com.minsumo;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,6 +20,7 @@ public class DataHandler {
     private final String kafkaServer = "localhost:9092";
     private int sumoPort;
     private Producer<String, String> producer;
+    private static final Logger LOG = LoggerFactory.getLogger(DataHandler.class);
 
     public DataHandler(int port) throws Exception {
         sumoPort = port;
@@ -48,24 +51,24 @@ public class DataHandler {
         boolean inElement = false;
         String element = "";
         String temp;
-        while (true){
+        while (i < 100){
             temp = buffReader.readLine().trim();
             if(inElement){
+                element += temp;
                 if (temp.startsWith("</timestep>")){
                     producer.send(new ProducerRecord<String, String>("unprocessed", element ) );
                     inElement = false;
                     i++;
                     //System.out.println(i + " - " + element);
                     element = "";
-                }else{
-                    element += temp;
                 }
             }else {
                 if (temp.startsWith("<timestep")){
+                    element += temp;
                     inElement = true;
                 }
             }
         }
-    //    producer.close();
+        producer.close();
     }
 }
