@@ -1,9 +1,11 @@
 package com.minsumo.datacategorizer;
 
+import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
+import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
@@ -25,20 +27,21 @@ import java.util.Map;
 /**
  * Created by massih on 4/18/16.
  */
-public class FilteringBolt extends BaseBasicBolt{
+public class FilteringBolt extends BaseRichBolt{
 
     private DOMParser parser;
+    private OutputCollector collector;
 
     private static final Logger LOG = LoggerFactory.getLogger(FilteringBolt.class);
 
     @Override
-    public void prepare(Map stormConf, TopologyContext context) {
-        super.prepare(stormConf, context);
+    public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
+        collector = outputCollector;
         parser = new DOMParser();
     }
 
     @Override
-    public void execute(Tuple tuple, BasicOutputCollector collector) {
+    public void execute(Tuple tuple) {
         String tupleString = "<root>" + tuple.getString(0) + "</root>";
         try {
             parser.parse(new InputSource(new StringReader(tupleString)));

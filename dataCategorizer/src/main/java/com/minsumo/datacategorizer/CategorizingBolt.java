@@ -12,8 +12,13 @@ public class CategorizingBolt extends BaseBasicBolt {
 
     @Override
     public void execute(Tuple tuple, BasicOutputCollector basicOutputCollector) {
-        //System.out.println(tuple);
-
+        /*
+        "timeStep"
+        "vehicleID"
+        "speed"
+        "longitude"
+        "latitude"
+        */
     }
 
     @Override

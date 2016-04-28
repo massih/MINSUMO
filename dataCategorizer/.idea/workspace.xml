@@ -2,31 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f429ff28-1326-47f4-b4b6-f5c2ed0b74dc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_3_03.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/CategorizingBolt.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hs_err_pid21047.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/hs_err_pid21191.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCbolt.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/DCbolt.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SumoReceiver/target/SumoReceiver-1.0-SNAPSHOT-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/../SumoReceiver/target/SumoReceiver-1.0-SNAPSHOT-jar-with-dependencies.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SumoReceiver/target/SumoReceiver-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/../SumoReceiver/target/SumoReceiver-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SumoReceiver/target/classes/com/minsumo/DataHandler.class" afterPath="$PROJECT_DIR$/../SumoReceiver/target/classes/com/minsumo/DataHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SumoReceiver/target/sumoReceiver" afterPath="$PROJECT_DIR$/../SumoReceiver/target/sumoReceiver" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/DCspout.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/CategorizingBolt.class" afterPath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/CategorizingBolt.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/DCtopology.class" afterPath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/DCtopology.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/FilteringBolt.class" afterPath="$PROJECT_DIR$/target/classes/com/minsumo/datacategorizer/FilteringBolt.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/data-categorizaer-storm-1.0-SNAPSHOT-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/data-categorizaer-storm-1.0-SNAPSHOT-jar-with-dependencies.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/data-categorizaer-storm-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/data-categorizaer-storm-1.0-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/dataCategorizer" afterPath="$PROJECT_DIR$/target/dataCategorizer" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SumoReceiver/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../SumoReceiver/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SumoReceiver/src/main/java/com/minsumo/DataHandler.java" afterPath="$PROJECT_DIR$/../SumoReceiver/src/main/java/com/minsumo/DataHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SumoReceiver/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/../SumoReceiver/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dataCategorizer.iml" afterPath="$PROJECT_DIR$/dataCategorizer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCtopology.java" afterPath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCtopology.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/CategorizingBolt.java" afterPath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/CategorizingBolt.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java" afterPath="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
     </list>
     <ignored path="dataCategorizer.iws" />
@@ -54,7 +39,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
+            <state relative-caret-position="2106">
               <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
@@ -66,18 +51,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
               <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilteringBolt.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FilteringBolt.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+            <state relative-caret-position="680">
+              <caret line="65" column="90" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategorizingBolt.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CategorizingBolt.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/CategorizingBolt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+            <state relative-caret-position="424">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,9 +105,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCFilteringbolt.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/Filteringbolt.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCtopology.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/CategorizingBolt.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCtopology.java" />
       </list>
     </option>
   </component>
@@ -176,7 +159,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-2" />
     <option name="width" value="3204" />
-    <option name="height" value="1746" />
+    <option name="height" value="1497" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -203,6 +186,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -282,8 +267,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -747,15 +730,16 @@
       <workItem from="1461583442030" duration="4178000" />
       <workItem from="1461598800912" duration="1055000" />
       <workItem from="1461624324205" duration="15359000" />
-      <workItem from="1461759068136" duration="3683000" />
+      <workItem from="1461759068136" duration="6854000" />
+      <workItem from="1461846242745" duration="3084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59406000" />
+    <option name="totallyTimeSpent" value="65661000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="0" width="3204" height="1746" extended-state="6" />
+    <frame x="-2" y="0" width="3204" height="1497" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -763,9 +747,9 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19421221" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19678457" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32100397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32094863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -826,20 +810,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="35" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -862,20 +837,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="35" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -898,20 +864,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -934,20 +891,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -970,20 +918,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -1006,20 +945,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -1042,20 +972,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="897">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1078,20 +999,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="897">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1114,20 +1026,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1150,20 +1053,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1186,20 +1080,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/storm/storm-kafka/0.10.0/storm-kafka-0.10.0.jar!/storm/kafka/SpoutConfig.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1214,17 +1099,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/DCspout.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
+        <state relative-caret-position="2106">
           <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
@@ -1234,6 +1112,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="65" column="90" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1242,18 +1128,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/CategorizingBolt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/minsumo/datacategorizer/FilteringBolt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state relative-caret-position="424">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -42,5 +42,5 @@ TAPASCologne-0.24.0/
 stormTest
 
 #Error logs
-he_err*.log
+hs_err*.log
 
