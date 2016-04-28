@@ -16,28 +16,34 @@ import java.util.UUID;
  */
 public class DCtopology {
     private static final Logger LOG = LoggerFactory.getLogger(DCtopology.class);
+    private final static int    KAFKA_PORT              = 9092;
+    private final static String KAFKA_HOST              = "localhost";
+    private final static String KAFKA_TOPIC_NAME        = "unprocessed";
+    private final static String TOPOLOGY_NAME           = "middlewareLayer";
+    private final static String KAFKA_SPOUT             = "unprocessedKafkaSpout";
+    private final static String FILTERING_BOLT          = "filteringBolt";
+    private final static String CATEGORIZING_BOLT       = "categorizingBolt";
+    private final static String ZK_ROOT                 = "/brokers";
 
     public static void main(String args[]){
-        String topicName = "unprocessed";
         TopologyBuilder builder = new TopologyBuilder();
-
         Config conf = new Config();
         conf.setDebug(false);
         conf.setMaxTaskParallelism(5);
         //KafkaConfig
-        Broker broker = new Broker("localhost", 9092);
+        Broker broker = new Broker(KAFKA_HOST, KAFKA_PORT);
         GlobalPartitionInformation partitionInfo = new GlobalPartitionInformation();
         partitionInfo.addPartition(0,broker);
         StaticHosts staticHosts = new StaticHosts(partitionInfo);
-        SpoutConfig spoutConfig = new SpoutConfig(staticHosts, topicName, "/brokers", UUID.randomUUID().toString());
+        SpoutConfig spoutConfig = new SpoutConfig(staticHosts, KAFKA_TOPIC_NAME, ZK_ROOT, UUID.randomUUID().toString());
         spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
         spoutConfig.startOffsetTime = kafka.api.OffsetRequest.LatestTime();
-
-        builder.setSpout("unprocessedKafkaSpout", new KafkaSpout(spoutConfig), 1);
-        builder.setBolt("filteringBolt", new FilteringBolt(), 1).shuffleGrouping("unprocessedKafkaSpout");
-        builder.setBolt("categorizingBolt", new CategorizingBolt(), 1).shuffleGrouping("filteringBolt");
+        //TOPOLOGY COMPONENTS
+        builder.setSpout(KAFKA_SPOUT, new KafkaSpout(spoutConfig), 1);
+        builder.setBolt(FILTERING_BOLT, new FilteringBolt(), 1).shuffleGrouping(KAFKA_SPOUT);
+        builder.setBolt(CATEGORIZING_BOLT, new CategorizingBolt(), 1).shuffleGrouping(FILTERING_BOLT);
 
         LocalCluster cluster = new LocalCluster();
-        cluster.submitTopology("middlewareLayer", conf, builder.createTopology());
+        cluster.submitTopology(TOPOLOGY_NAME, conf, builder.createTopology());
     }
 }

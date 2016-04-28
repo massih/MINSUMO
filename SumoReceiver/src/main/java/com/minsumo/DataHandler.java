@@ -17,7 +17,7 @@ import java.util.Properties;
  */
 public class DataHandler {
 
-    private final String kafkaServer = "localhost:9092";
+    private final String KAFKA_SERVER = "localhost:9092";
     private int sumoPort;
     private Producer<String, String> producer;
     private static final Logger LOG = LoggerFactory.getLogger(DataHandler.class);
@@ -30,7 +30,7 @@ public class DataHandler {
 
     private void kafkaSetup(){
         Properties props = new Properties();
-        props.put("bootstrap.servers", kafkaServer);
+        props.put("bootstrap.servers", KAFKA_SERVER);
         props.put("acks", "0");
         props.put("retries", 0);
         props.put("batch.size", 0);
