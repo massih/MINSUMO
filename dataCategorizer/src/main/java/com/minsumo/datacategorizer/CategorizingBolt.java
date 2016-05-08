@@ -18,6 +18,9 @@ import org.slf4j.LoggerFactory;
 import rx.Observable;
 import rx.functions.Func1;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -29,19 +32,22 @@ public class CategorizingBolt extends BaseRichBolt {
 
     private OutputCollector collector;
     private final double COVERAGE_AREA = 0.25;
-    private RTree<String, Point> tree;
+    private BufferedReader bufferedReader;
+    private RTree<String, Point> rsuTree;
 
     private static final Logger LOG = LoggerFactory.getLogger(CategorizingBolt.class);
 
-    public CategorizingBolt() {
-        //this.tree = tree;
+    public CategorizingBolt(String buffer) {
+        //bufferedReader = new BufferedReader(buffer);
+        System.out.println("************ size of tree ====== " +buffer.split("\n").length+" ***********");
+
     }
 
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         collector = outputCollector;
-        RTree<String, Point> tree = (RTree<String, Point>)map.get("treeObject");
-        System.out.println("************ size of tree ====== " +tree.size()+" ***********");
+        //rsuTree = makeTree();
+        //System.out.println("************ size of tree ====== " +rsuTree.size()+" ***********");
     }
 
     @Override
@@ -56,7 +62,7 @@ public class CategorizingBolt extends BaseRichBolt {
         Double lon = Double.parseDouble(tuple.getString(3));
         Double lat = Double.parseDouble(tuple.getString(4));
         Point vPoint = Point.create(lon, lat);
-        List<Entry<String, Point>> rsuList = search(tree, vPoint, COVERAGE_AREA).toList().toBlocking().single();
+        List<Entry<String, Point>> rsuList = search(rsuTree, vPoint, COVERAGE_AREA).toList().toBlocking().single();
         System.out.println("*******Found RSU num: " + rsuList.size() + " *******");
     }
 
@@ -65,6 +71,29 @@ public class CategorizingBolt extends BaseRichBolt {
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
 
+    }
+
+    private RTree<String, Point> makeTree(){
+        RTree<String, Point> tree = RTree.star().create();
+        String[] idLatLon;
+        String id;
+        double lat,lon;
+        String line = null;
+        try {
+            line = bufferedReader.readLine();
+            while (line != null) {
+                idLatLon = line.split(",");
+                //System.out.println(idLatLon[0] + " " + idLatLon[1] + " " + idLatLon[2]);
+                id = idLatLon[0];
+                lat = Double.parseDouble(idLatLon[1]);
+                lon = Double.parseDouble(idLatLon[2]);
+                tree = tree.add(id, Geometries.pointGeographic(lon, lat));
+                line = bufferedReader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return tree;
     }
 
     private <T> Observable<Entry<T, Point>> search(RTree<T, Point> tree, Point lonLat,
