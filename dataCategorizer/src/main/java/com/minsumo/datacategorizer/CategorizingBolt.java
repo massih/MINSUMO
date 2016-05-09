@@ -32,13 +32,13 @@ public class CategorizingBolt extends BaseRichBolt {
 
     private OutputCollector collector;
     private final double COVERAGE_AREA = 0.25;
-    private BufferedReader bufferedReader;
     private RTree<String, Point> rsuTree;
+    private String rsuString;
 
     private static final Logger LOG = LoggerFactory.getLogger(CategorizingBolt.class);
 
     public CategorizingBolt(String buffer) {
-        //bufferedReader = new BufferedReader(buffer);
+        rsuString = buffer;
         System.out.println("************ size of tree ====== " +buffer.split("\n").length+" ***********");
 
     }
@@ -46,7 +46,7 @@ public class CategorizingBolt extends BaseRichBolt {
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         collector = outputCollector;
-        //rsuTree = makeTree();
+        rsuTree = makeTree();
         //System.out.println("************ size of tree ====== " +rsuTree.size()+" ***********");
     }
 
@@ -78,20 +78,15 @@ public class CategorizingBolt extends BaseRichBolt {
         String[] idLatLon;
         String id;
         double lat,lon;
-        String line = null;
-        try {
-            line = bufferedReader.readLine();
-            while (line != null) {
-                idLatLon = line.split(",");
-                //System.out.println(idLatLon[0] + " " + idLatLon[1] + " " + idLatLon[2]);
-                id = idLatLon[0];
-                lat = Double.parseDouble(idLatLon[1]);
-                lon = Double.parseDouble(idLatLon[2]);
-                tree = tree.add(id, Geometries.pointGeographic(lon, lat));
-                line = bufferedReader.readLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        //String line = null;
+        String[] lines = rsuString.split("\n");
+        for (String line: lines) {
+            idLatLon = line.split(",");
+            //System.out.println(idLatLon[0] + " " + idLatLon[1] + " " + idLatLon[2]);
+            id = idLatLon[0];
+            lat = Double.parseDouble(idLatLon[1]);
+            lon = Double.parseDouble(idLatLon[2]);
+            tree = tree.add(id, Geometries.pointGeographic(lon, lat));
         }
         return tree;
     }
