@@ -10,10 +10,7 @@ import org.slf4j.LoggerFactory;
 import storm.kafka.*;
 import storm.kafka.trident.GlobalPartitionInformation;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.UUID;
 
 /**
@@ -29,13 +26,13 @@ public class DCtopology {
     private final static String FILTERING_BOLT          = "filteringBolt";
     private final static String CATEGORIZING_BOLT       = "categorizingBolt";
     private final static String ZK_ROOT                 = "/brokers";
-    private final static String rsuFile                 = "RSUs.txt";
+    private final static String rsuFile                 = "RSU_t.xml";
 
     public static void main(String args[]) throws IOException {
         TopologyBuilder builder = new TopologyBuilder();
         Config conf = new Config();
         conf.setDebug(false);
-        conf.setMaxTaskParallelism(5);
+        conf.setMaxTaskParallelism(10);
         //KafkaConfig
         Broker broker = new Broker(KAFKA_HOST, KAFKA_PORT);
         GlobalPartitionInformation partitionInfo = new GlobalPartitionInformation();
@@ -45,7 +42,9 @@ public class DCtopology {
         spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
         spoutConfig.startOffsetTime = kafka.api.OffsetRequest.LatestTime();
         //Reading RSU file
-        BufferedReader bufferReader = new BufferedReader(new FileReader("RSUs.txt"));
+        ClassLoader classLoader = DCtopology.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(rsuFile);
+        BufferedReader bufferReader = new BufferedReader(new InputStreamReader(inputStream));
         String temp = bufferReader.readLine();
         String res = "";
         while (temp != null) {

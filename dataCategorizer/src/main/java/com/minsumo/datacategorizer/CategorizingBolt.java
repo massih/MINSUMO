@@ -2,9 +2,7 @@ package com.minsumo.datacategorizer;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.topology.base.BaseBasicBolt;
 import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Tuple;
 import com.github.davidmoten.grumpy.core.Position;
@@ -13,16 +11,25 @@ import com.github.davidmoten.rtree.RTree;
 import com.github.davidmoten.rtree.geometry.Geometries;
 import com.github.davidmoten.rtree.geometry.Point;
 import com.github.davidmoten.rtree.geometry.Rectangle;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.xerces.parsers.DOMParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 import rx.Observable;
 import rx.functions.Func1;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by massih on 4/26/16.
@@ -30,29 +37,34 @@ import java.util.Map;
 
 public class CategorizingBolt extends BaseRichBolt {
 
+    private final String KAFKA_SERVER = "localhost:9092";
     private OutputCollector collector;
     private final double COVERAGE_AREA = 0.25;
     private RTree<String, Point> rsuTree;
     private String rsuString;
+    private Producer<String, String> kafkaProducer;
 
     private static final Logger LOG = LoggerFactory.getLogger(CategorizingBolt.class);
 
     public CategorizingBolt(String buffer) {
         rsuString = buffer;
-        System.out.println("************ size of tree ====== " +buffer.split("\n").length+" ***********");
-
     }
 
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         collector = outputCollector;
-        rsuTree = makeTree();
-        //System.out.println("************ size of tree ====== " +rsuTree.size()+" ***********");
+        try {
+            rsuTree = makeTree();
+        } catch (SAXException | IOException e) {
+            e.printStackTrace();
+        }
+
+        kafkaSetup();
     }
 
     @Override
     public void execute(Tuple tuple) {
-               /*
+        /*
         "timeStep"
         "vehicleID"
         "speed"
@@ -63,7 +75,23 @@ public class CategorizingBolt extends BaseRichBolt {
         Double lat = Double.parseDouble(tuple.getString(4));
         Point vPoint = Point.create(lon, lat);
         List<Entry<String, Point>> rsuList = search(rsuTree, vPoint, COVERAGE_AREA).toList().toBlocking().single();
-        System.out.println("*******Found RSU num: " + rsuList.size() + " *******");
+        String chosenRSU;
+        if (rsuList.size() > 0){
+            chosenRSU = rsuList.get(0).value();
+            if (rsuList.size() > 1){
+                Double minDistance = COVERAGE_AREA;
+                Position vPos = Position.create(lat, lon);
+                for (Entry<String, Point> rsu : rsuList){
+                    Double distance = vPos.getDistanceToKm( Position.create(rsu.geometry().y(), rsu.geometry().x()) );
+                    if ( distance <= minDistance ){
+                        chosenRSU = rsu.value();
+                        minDistance = distance;
+                    }
+                }
+            }
+            kafkaProducer.send(new ProducerRecord<String, String>(chosenRSU, tuple.toString() ));
+            System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
+        }
     }
 
 
@@ -73,20 +101,39 @@ public class CategorizingBolt extends BaseRichBolt {
 
     }
 
-    private RTree<String, Point> makeTree(){
+    private void kafkaSetup() {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", KAFKA_SERVER);
+        props.put("acks", "0");
+        props.put("retries", 0);
+        props.put("batch.size", 0);
+        props.put("linger.ms", 0);
+        props.put("buffer.memory", 33554432);
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("delete.topic.enable", "true");
+        kafkaProducer = new KafkaProducer<>(props);
+    }
+
+    private RTree<String, Point> makeTree() throws IOException, SAXException {
+        DOMParser parser = new DOMParser();
+        parser.parse(new InputSource(new StringReader(rsuString)));
         RTree<String, Point> tree = RTree.star().create();
-        String[] idLatLon;
-        String id;
-        double lat,lon;
-        //String line = null;
-        String[] lines = rsuString.split("\n");
-        for (String line: lines) {
-            idLatLon = line.split(",");
-            //System.out.println(idLatLon[0] + " " + idLatLon[1] + " " + idLatLon[2]);
-            id = idLatLon[0];
-            lat = Double.parseDouble(idLatLon[1]);
-            lon = Double.parseDouble(idLatLon[2]);
-            tree = tree.add(id, Geometries.pointGeographic(lon, lat));
+        Document xmlDoc = parser.getDocument();
+        NodeList rsus  = xmlDoc.getElementsByTagName("rsu");
+        Double lat, lon;
+        String rsuID;
+        System.out.println("*************NUMBER OF RSUS: " + rsus.getLength());
+        for (int i=0; i < rsus.getLength(); i++) {
+            Element rsu = (Element) rsus.item(i);
+            NodeList elements = rsu.getChildNodes();
+            System.out.println("*************RSU CHILDES SIZE:" + elements.getLength());
+            rsuID = rsu.getElementsByTagName("id").item(0).getTextContent();
+            lat = Double.parseDouble(rsu.getElementsByTagName("latitude").item(0).getTextContent());
+            lon = Double.parseDouble(rsu.getElementsByTagName("longitude").item(0).getTextContent());
+            //lon = Double.parseDouble(rsu.getAttribute("longitude"));
+            System.out.println("*************ELEMENT TO CREATE TREE:" + rsuID + " - " + lat +" , " +lon);
+            tree = tree.add(rsuID, Geometries.pointGeographic(lon, lat));
         }
         return tree;
     }
@@ -118,8 +165,8 @@ public class CategorizingBolt extends BaseRichBolt {
         // accuracy is enforced later
         Position north = from.predict(distanceKm, 0);
         Position south = from.predict(distanceKm, 180);
-        Position east = from.predict(distanceKm, 90);
-        Position west = from.predict(distanceKm, 270);
+        Position east  = from.predict(distanceKm, 90);
+        Position west  = from.predict(distanceKm, 270);
 
         return Geometries.rectangle(west.getLon(), south.getLat(), east.getLon(), north.getLat());
     }

@@ -54,6 +54,7 @@ public class FilteringBolt extends BaseRichBolt{
                 for ( int j=0; j < vehicles.getLength(); j++) {
                     Element vehicle = (Element) vehicles.item(j);
                     collector.emit(new Values(timeStepValue, vehicle.getAttribute("id") , vehicle.getAttribute("speed") , vehicle.getAttribute("x"), vehicle.getAttribute("y")));
+                    collector.ack(tuple);
                 }
             }
         } catch (SAXException | IOException e) {
@@ -65,4 +66,5 @@ public class FilteringBolt extends BaseRichBolt{
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
         declarer.declare(new Fields("timeStep","vehicleID","speed", "longitude","latitude"));
     }
+
 }
