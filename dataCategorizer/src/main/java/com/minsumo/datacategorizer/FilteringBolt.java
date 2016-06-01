@@ -49,11 +49,12 @@ public class FilteringBolt extends BaseRichBolt{
             NodeList timeSteps = xmlDoc.getElementsByTagName("timestep");
             for (int i=0; i < timeSteps.getLength();i++) {
                 Element timeStep = (Element) timeSteps.item(i);
+                String firstTimestamp = timeStep.getAttribute("firstTimestamp");
                 String timeStepValue = timeStep.getAttribute("time");
                 NodeList vehicles = timeStep.getElementsByTagName("vehicle");
                 for ( int j=0; j < vehicles.getLength(); j++) {
                     Element vehicle = (Element) vehicles.item(j);
-                    collector.emit(new Values(timeStepValue, vehicle.getAttribute("id") , vehicle.getAttribute("speed") , vehicle.getAttribute("x"), vehicle.getAttribute("y")));
+                    collector.emit(new Values(timeStepValue,firstTimestamp ,vehicle.getAttribute("id") , vehicle.getAttribute("speed") , vehicle.getAttribute("x"), vehicle.getAttribute("y")));
                     collector.ack(tuple);
                 }
             }
@@ -64,7 +65,7 @@ public class FilteringBolt extends BaseRichBolt{
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("timeStep","vehicleID","speed", "longitude","latitude"));
+        declarer.declare(new Fields("timeStep","firstTimestamp","vehicleID","speed", "longitude","latitude"));
     }
 
 }

@@ -51,7 +51,7 @@ public class DataHandler {
         boolean inElement = false;
         String element = "";
         String temp;
-        while (i < 100){
+        while (i < 200){
             temp = buffReader.readLine().trim();
             if(inElement){
                 element += temp;
@@ -64,7 +64,10 @@ public class DataHandler {
                 }
             }else {
                 if (temp.startsWith("<timestep")){
-                    element += temp;
+                    String firstPart = temp.substring(0,9);
+                    String secondPart = temp.substring(9);
+                    element = firstPart + " firstTimestamp=\"" + System.currentTimeMillis() + "\"" + secondPart;
+                    //element += temp;
                     inElement = true;
                 }
             }

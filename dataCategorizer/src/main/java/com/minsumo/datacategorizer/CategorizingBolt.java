@@ -4,7 +4,9 @@ import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichBolt;
+import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
+import backtype.storm.tuple.Values;
 import com.github.davidmoten.grumpy.core.Position;
 import com.github.davidmoten.rtree.Entry;
 import com.github.davidmoten.rtree.RTree;
@@ -89,16 +91,18 @@ public class CategorizingBolt extends BaseRichBolt {
                     }
                 }
             }
-            kafkaProducer.send(new ProducerRecord<String, String>(chosenRSU, tuple.toString() ));
-            System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
+            //kafkaProducer.send(new ProducerRecord<String, String>(chosenRSU, tuple.toString() ));
+            //System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
         }
+        collector.emit(tuple, new Values(Long.parseLong(tuple.getStringByField("firstTimestamp")) ,System.currentTimeMillis()) );
     }
 
 
 
     @Override
-    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-
+    public void declareOutputFields(OutputFieldsDeclarer declarer) {
+//        declarer.declare(new Fields("timeStep","firstTimestamp","secondTimestamp","vehicleID","speed", "longitude","latitude"));
+        declarer.declare(new Fields("firstTimestamp", "secondTimestamp"));
     }
 
     private void kafkaSetup() {
@@ -123,16 +127,16 @@ public class CategorizingBolt extends BaseRichBolt {
         NodeList rsus  = xmlDoc.getElementsByTagName("rsu");
         Double lat, lon;
         String rsuID;
-        System.out.println("*************NUMBER OF RSUS: " + rsus.getLength());
+        //System.out.println("*************NUMBER OF RSUS: " + rsus.getLength());
         for (int i=0; i < rsus.getLength(); i++) {
             Element rsu = (Element) rsus.item(i);
             NodeList elements = rsu.getChildNodes();
-            System.out.println("*************RSU CHILDES SIZE:" + elements.getLength());
+            //System.out.println("*************RSU CHILDES SIZE:" + elements.getLength());
             rsuID = rsu.getElementsByTagName("id").item(0).getTextContent();
             lat = Double.parseDouble(rsu.getElementsByTagName("latitude").item(0).getTextContent());
             lon = Double.parseDouble(rsu.getElementsByTagName("longitude").item(0).getTextContent());
             //lon = Double.parseDouble(rsu.getAttribute("longitude"));
-            System.out.println("*************ELEMENT TO CREATE TREE:" + rsuID + " - " + lat +" , " +lon);
+            //System.out.println("*************ELEMENT TO CREATE TREE:" + rsuID + " - " + lat +" , " +lon);
             tree = tree.add(rsuID, Geometries.pointGeographic(lon, lat));
         }
         return tree;
