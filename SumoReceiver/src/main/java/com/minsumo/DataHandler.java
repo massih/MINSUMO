@@ -47,31 +47,31 @@ public class DataHandler {
         Socket socket = serverSocket.accept();
         System.out.println("connected :-)");
         BufferedReader buffReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        int i = 0;
         boolean inElement = false;
         String element = "";
         String temp;
-        while (i < 200){
-            temp = buffReader.readLine().trim();
-            if(inElement){
-                element += temp;
-                if (temp.startsWith("</timestep>")){
-                    producer.send(new ProducerRecord<String, String>("unprocessed", element ) );
-                    inElement = false;
-                    i++;
-                    //System.out.println(i + " - " + element);
-                    element = "";
-                }
-            }else {
-                if (temp.startsWith("<timestep")){
-                    String firstPart = temp.substring(0,9);
-                    String secondPart = temp.substring(9);
-                    element = firstPart + " firstTimestamp=\"" + System.currentTimeMillis() + "\"" + secondPart;
-                    //element += temp;
-                    inElement = true;
+        while (true){
+            temp = buffReader.readLine();
+            if(temp != null){
+                temp = temp.trim();
+                if(inElement){
+                    element += temp;
+                    if (temp.startsWith("</timestep>")){
+                        producer.send(new ProducerRecord<String, String>("unprocessed", element ) );
+                        inElement = false;
+                        element = "";
+                    }
+                }else {
+                    if (temp.startsWith("<timestep")){
+                        String firstPart = temp.substring(0,9);
+                        String secondPart = temp.substring(9);
+                        element = firstPart + " firstTimestamp=\"" + System.currentTimeMillis() + "\"" + secondPart;
+                        inElement = true;
+                    }
                 }
             }
+
         }
-        producer.close();
+        //producer.close();
     }
 }

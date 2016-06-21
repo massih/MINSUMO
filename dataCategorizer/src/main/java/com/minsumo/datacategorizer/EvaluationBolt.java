@@ -17,6 +17,7 @@ public class EvaluationBolt extends BaseRichBolt{
 
     private OutputCollector collector;
     private long averageLatency;
+    private int globalCounter;
     private final int MAXCOUNT = 100;
     private int counter;
 
@@ -29,24 +30,28 @@ public class EvaluationBolt extends BaseRichBolt{
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         collector = outputCollector;
         counter = 0;
+        globalCounter = 0;
         averageLatency = 0;
     }
 
     @Override
     public void execute(Tuple tuple) {
-        //System.out.println("%%%%%%%%%%%%%%%%number of fields: " + tuple.size());
-        if (counter <= 1100){
-            if (counter > 1000){
+        if(globalCounter >= 1000){
+            if (counter <= 1000){
                 Long ltc = (tuple.getLongByField("secondTimestamp") - tuple.getLongByField("firstTimestamp"));
-                System.out.println("record number "+counter+ " latency is : " + ltc);
+                //System.out.println("record number "+counter+ " latency is : " + ltc);
                 averageLatency += ltc;
+
+                if(counter == 1000){
+                    averageLatency = averageLatency/1000;
+                    System.out.println("%%%%%%%%%%%%%%%%The average latency for 100 tuple is: "+ averageLatency + " %%%%%%%%%%%%%%%%");
+                    counter = 0;
+                    averageLatency = -1;
+                }
+                counter++;
             }
-            if(counter == 1100){
-                averageLatency = averageLatency/100;
-                System.out.println("%%%%%%%%%%%%%%%%The average latency for 100 tuple is: "+averageLatency);
-            }
-            counter++;
         }
+        globalCounter++;
     }
 
     @Override
