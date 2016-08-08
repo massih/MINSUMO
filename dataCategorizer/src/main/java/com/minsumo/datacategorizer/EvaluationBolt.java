@@ -21,7 +21,7 @@ public class EvaluationBolt extends BaseRichBolt{
     private long endTime;
     private int globalCounter;
     private int counter;
-    private boolean latency = true;
+    private boolean latency = false;
     private final int AVERAGE_COUNTER = 1000;
 
     private static final Logger LOG = LoggerFactory.getLogger(EvaluationBolt.class);
@@ -69,6 +69,8 @@ public class EvaluationBolt extends BaseRichBolt{
         if (globalCounter == 5000){
             startTime = System.currentTimeMillis();
             endTime = startTime + 1000;
+            System.out.println(" START TIME = " + startTime);
+            System.out.println(" END TIME = " + endTime);
             globalCounter++;
         }else if(globalCounter > 5000) {
             if(tuple.getLongByField("firstTimestamp") >= startTime && tuple.getLongByField("secondTimestamp") <= endTime){
