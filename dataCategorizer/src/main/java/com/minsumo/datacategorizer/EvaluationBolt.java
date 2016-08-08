@@ -17,9 +17,12 @@ public class EvaluationBolt extends BaseRichBolt{
 
     private OutputCollector collector;
     private long averageLatency;
+    private long startTime;
+    private long endTime;
     private int globalCounter;
-    private final int MAXCOUNT = 100;
     private int counter;
+    private boolean latency = true;
+    private final int AVERAGE_COUNTER = 1000;
 
     private static final Logger LOG = LoggerFactory.getLogger(EvaluationBolt.class);
 
@@ -36,22 +39,45 @@ public class EvaluationBolt extends BaseRichBolt{
 
     @Override
     public void execute(Tuple tuple) {
-        if(globalCounter >= 1000){
-            if (counter <= 1000){
+        if(latency){
+            calculateLatency(tuple);
+        }else{
+            calculateTroughput(tuple);
+        }
+    }
+
+    private void calculateLatency(Tuple tuple){
+        if(globalCounter >= 5000){
+            if (counter <= AVERAGE_COUNTER){
                 Long ltc = (tuple.getLongByField("secondTimestamp") - tuple.getLongByField("firstTimestamp"));
-                //System.out.println("record number "+counter+ " latency is : " + ltc);
                 averageLatency += ltc;
 
-                if(counter == 1000){
-                    averageLatency = averageLatency/1000;
-                    System.out.println("%%%%%%%%%%%%%%%%The average latency for 100 tuple is: "+ averageLatency + " %%%%%%%%%%%%%%%%");
+                if(counter == AVERAGE_COUNTER){
+                    averageLatency = averageLatency/AVERAGE_COUNTER;
+                    System.out.println("%%%%%%%%%%%%%%%%The average latency for 1000 tuple is: "+ averageLatency + " %%%%%%%%%%%%%%%%");
                     counter = 0;
                     averageLatency = -1;
                 }
                 counter++;
             }
+        }else{
+            globalCounter++;
         }
-        globalCounter++;
+    }
+
+    private void calculateTroughput(Tuple tuple){
+        if (globalCounter == 5000){
+            startTime = System.currentTimeMillis();
+            endTime = startTime + 1000;
+            globalCounter++;
+        }else if(globalCounter > 5000) {
+            if(tuple.getLongByField("firstTimestamp") >= startTime && tuple.getLongByField("secondTimestamp") <= endTime){
+                counter ++;
+                System.out.println(counter + " tuples processed in 1 second");
+            }
+        }else if(globalCounter < 5000){
+            globalCounter++;
+        }
     }
 
     @Override

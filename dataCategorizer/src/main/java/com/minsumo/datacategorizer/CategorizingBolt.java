@@ -49,6 +49,7 @@ public class CategorizingBolt extends BaseRichBolt {
     private static final Logger LOG = LoggerFactory.getLogger(CategorizingBolt.class);
 
     public CategorizingBolt(String buffer) {
+
         rsuString = buffer;
     }
 

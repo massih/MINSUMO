@@ -34,6 +34,7 @@ public class DCtopology {
         Config conf = new Config();
         conf.setDebug(false);
         conf.setMaxTaskParallelism(10);
+
         //KafkaConfig
         Broker broker = new Broker(KAFKA_HOST, KAFKA_PORT);
         GlobalPartitionInformation partitionInfo = new GlobalPartitionInformation();
@@ -42,6 +43,7 @@ public class DCtopology {
         SpoutConfig spoutConfig = new SpoutConfig(staticHosts, KAFKA_TOPIC_NAME, ZK_ROOT, UUID.randomUUID().toString());
         spoutConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
         spoutConfig.startOffsetTime = kafka.api.OffsetRequest.LatestTime();
+
         //Reading RSU file
         ClassLoader classLoader = DCtopology.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(rsuFile);
@@ -56,7 +58,7 @@ public class DCtopology {
         //TOPOLOGY COMPONENTS
         builder.setSpout(KAFKA_SPOUT, new KafkaSpout(spoutConfig), 10);
         builder.setBolt(FILTERING_BOLT, new FilteringBolt(), 10).shuffleGrouping(KAFKA_SPOUT);
-        builder.setBolt(CATEGORIZING_BOLT, new CategorizingBolt(res), 10).shuffleGrouping(FILTERING_BOLT);
+        builder.setBolt(CATEGORIZING_BOLT, new CategorizingBolt(res), 2).shuffleGrouping(FILTERING_BOLT);
         builder.setBolt(EVALUATION_BOLT, new EvaluationBolt(), 1).globalGrouping(CATEGORIZING_BOLT);
 
         LocalCluster cluster = new LocalCluster();
