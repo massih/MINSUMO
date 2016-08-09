@@ -56,7 +56,7 @@ public class DCtopology {
         }
 
         //TOPOLOGY COMPONENTS
-        builder.setSpout(KAFKA_SPOUT, new KafkaSpout(spoutConfig), 10);
+        builder.setSpout(KAFKA_SPOUT, new KafkaSpout(spoutConfig), 100);
         builder.setBolt(FILTERING_BOLT, new FilteringBolt(), 10).shuffleGrouping(KAFKA_SPOUT);
         builder.setBolt(CATEGORIZING_BOLT, new CategorizingBolt(res), 2).shuffleGrouping(FILTERING_BOLT);
         builder.setBolt(EVALUATION_BOLT, new EvaluationBolt(), 1).globalGrouping(CATEGORIZING_BOLT);

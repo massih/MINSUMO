@@ -93,8 +93,9 @@ public class CategorizingBolt extends BaseRichBolt {
                 }
             }
             //kafkaProducer.send(new ProducerRecord<String, String>(chosenRSU, tuple.toString() ));
-            //System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
+            System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
         }
+	System.out.println("######################################## ZERO RSU ####################################################");
         collector.emit(tuple, new Values(Long.parseLong(tuple.getStringByField("firstTimestamp")) ,System.currentTimeMillis()) );
     }
 

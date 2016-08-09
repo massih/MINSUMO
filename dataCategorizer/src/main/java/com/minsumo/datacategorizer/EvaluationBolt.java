@@ -66,18 +66,18 @@ public class EvaluationBolt extends BaseRichBolt{
     }
 
     private void calculateTroughput(Tuple tuple){
-        if (globalCounter == 5000){
+        if (globalCounter == 2000){
             startTime = System.currentTimeMillis();
             endTime = startTime + 1000;
             System.out.println(" START TIME = " + startTime);
             System.out.println(" END TIME = " + endTime);
             globalCounter++;
-        }else if(globalCounter > 5000) {
+        }else if(globalCounter > 2000) {
             if(tuple.getLongByField("firstTimestamp") >= startTime && tuple.getLongByField("secondTimestamp") <= endTime){
                 counter ++;
                 System.out.println(counter + " tuples processed in 1 second");
             }
-        }else if(globalCounter < 5000){
+        }else if(globalCounter < 2000){
             globalCounter++;
         }
     }

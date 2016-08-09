@@ -1,0 +1,49 @@
+2016-08-09 07:58:27,951 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /usr/local/zookeeper/bin/../conf/zoo.cfg
+2016-08-09 07:58:27,962 [myid:] - INFO  [main:DatadirCleanupManager@78] - autopurge.snapRetainCount set to 3
+2016-08-09 07:58:27,963 [myid:] - INFO  [main:DatadirCleanupManager@79] - autopurge.purgeInterval set to 0
+2016-08-09 07:58:27,963 [myid:] - INFO  [main:DatadirCleanupManager@101] - Purge task is not scheduled.
+2016-08-09 07:58:27,965 [myid:] - WARN  [main:QuorumPeerMain@113] - Either no config or no quorum defined in config, running  in standalone mode
+2016-08-09 07:58:27,997 [myid:] - INFO  [main:QuorumPeerConfig@103] - Reading configuration from: /usr/local/zookeeper/bin/../conf/zoo.cfg
+2016-08-09 07:58:27,998 [myid:] - INFO  [main:ZooKeeperServerMain@95] - Starting server
+2016-08-09 07:58:28,014 [myid:] - INFO  [main:Environment@100] - Server environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT
+2016-08-09 07:58:28,014 [myid:] - INFO  [main:Environment@100] - Server environment:host.name=bhost
+2016-08-09 07:58:28,015 [myid:] - INFO  [main:Environment@100] - Server environment:java.version=1.7.0_95
+2016-08-09 07:58:28,015 [myid:] - INFO  [main:Environment@100] - Server environment:java.vendor=Oracle Corporation
+2016-08-09 07:58:28,015 [myid:] - INFO  [main:Environment@100] - Server environment:java.home=/usr/lib/jvm/java-7-openjdk-amd64/jre
+2016-08-09 07:58:28,015 [myid:] - INFO  [main:Environment@100] - Server environment:java.class.path=/usr/local/zookeeper/bin/../build/classes:/usr/local/zookeeper/bin/../build/lib/*.jar:/usr/local/zookeeper/bin/../lib/slf4j-log4j12-1.6.1.jar:/usr/local/zookeeper/bin/../lib/slf4j-api-1.6.1.jar:/usr/local/zookeeper/bin/../lib/netty-3.7.0.Final.jar:/usr/local/zookeeper/bin/../lib/log4j-1.2.16.jar:/usr/local/zookeeper/bin/../lib/jline-0.9.94.jar:/usr/local/zookeeper/bin/../zookeeper-3.4.6.jar:/usr/local/zookeeper/bin/../src/java/lib/*.jar:/usr/local/zookeeper/bin/../conf:
+2016-08-09 07:58:28,016 [myid:] - INFO  [main:Environment@100] - Server environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2016-08-09 07:58:28,016 [myid:] - INFO  [main:Environment@100] - Server environment:java.io.tmpdir=/tmp
+2016-08-09 07:58:28,016 [myid:] - INFO  [main:Environment@100] - Server environment:java.compiler=<NA>
+2016-08-09 07:58:28,020 [myid:] - INFO  [main:Environment@100] - Server environment:os.name=Linux
+2016-08-09 07:58:28,021 [myid:] - INFO  [main:Environment@100] - Server environment:os.arch=amd64
+2016-08-09 07:58:28,021 [myid:] - INFO  [main:Environment@100] - Server environment:os.version=2.6.32-042stab111.12
+2016-08-09 07:58:28,021 [myid:] - INFO  [main:Environment@100] - Server environment:user.name=sorush
+2016-08-09 07:58:28,021 [myid:] - INFO  [main:Environment@100] - Server environment:user.home=/home/sorush
+2016-08-09 07:58:28,022 [myid:] - INFO  [main:Environment@100] - Server environment:user.dir=/home/sorush/git/MINSUMO
+2016-08-09 07:58:28,036 [myid:] - INFO  [main:ZooKeeperServer@755] - tickTime set to 2000
+2016-08-09 07:58:28,037 [myid:] - INFO  [main:ZooKeeperServer@764] - minSessionTimeout set to -1
+2016-08-09 07:58:28,037 [myid:] - INFO  [main:ZooKeeperServer@773] - maxSessionTimeout set to -1
+2016-08-09 07:58:28,065 [myid:] - INFO  [main:NIOServerCnxnFactory@94] - binding to port 0.0.0.0/0.0.0.0:2181
+2016-08-09 07:58:31,329 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxnFactory@197] - Accepted socket connection from /0:0:0:0:0:0:0:1:49629
+2016-08-09 07:58:31,342 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:ZooKeeperServer@868] - Client attempting to establish new session at /0:0:0:0:0:0:0:1:49629
+2016-08-09 07:58:31,344 [myid:] - INFO  [SyncThread:0:FileTxnLog@199] - Creating new log file: log.3d55
+2016-08-09 07:58:31,401 [myid:] - INFO  [SyncThread:0:ZooKeeperServer@617] - Established session 0x1566f2b19b50000 with negotiated timeout 6000 for client /0:0:0:0:0:0:0:1:49629
+2016-08-09 07:59:01,753 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxnFactory@197] - Accepted socket connection from /176.126.247.73:40733
+2016-08-09 07:59:01,758 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:ZooKeeperServer@868] - Client attempting to establish new session at /176.126.247.73:40733
+2016-08-09 07:59:01,763 [myid:] - INFO  [SyncThread:0:ZooKeeperServer@617] - Established session 0x1566f2b19b50001 with negotiated timeout 20000 for client /176.126.247.73:40733
+2016-08-09 07:59:01,797 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxnFactory@197] - Accepted socket connection from /176.126.247.73:40736
+2016-08-09 07:59:01,802 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:ZooKeeperServer@868] - Client attempting to establish new session at /176.126.247.73:40736
+2016-08-09 07:59:01,804 [myid:] - INFO  [SyncThread:0:ZooKeeperServer@617] - Established session 0x1566f2b19b50002 with negotiated timeout 20000 for client /176.126.247.73:40736
+2016-08-09 07:59:01,808 [myid:] - INFO  [ProcessThread(sid:0 cport:-1)::PrepRequestProcessor@494] - Processed session termination for sessionid: 0x1566f2b19b50001
+2016-08-09 07:59:01,812 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxn@1007] - Closed socket connection for client /176.126.247.73:40733 which had sessionid 0x1566f2b19b50001
+2016-08-09 07:59:01,834 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxnFactory@197] - Accepted socket connection from /176.126.247.73:40738
+2016-08-09 07:59:01,836 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:ZooKeeperServer@868] - Client attempting to establish new session at /176.126.247.73:40738
+2016-08-09 07:59:01,838 [myid:] - INFO  [SyncThread:0:ZooKeeperServer@617] - Established session 0x1566f2b19b50003 with negotiated timeout 20000 for client /176.126.247.73:40738
+2016-08-09 07:59:02,834 [myid:] - INFO  [ProcessThread(sid:0 cport:-1)::PrepRequestProcessor@494] - Processed session termination for sessionid: 0x1566f2b19b50002
+2016-08-09 07:59:02,837 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxn@1007] - Closed socket connection for client /176.126.247.73:40736 which had sessionid 0x1566f2b19b50002
+2016-08-09 07:59:02,845 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:NIOServerCnxnFactory@197] - Accepted socket connection from /176.126.247.73:40753
+2016-08-09 07:59:02,848 [myid:] - INFO  [NIOServerCxn.Factory:0.0.0.0/0.0.0.0:2181:ZooKeeperServer@868] - Client attempting to establish new session at /176.126.247.73:40753
+2016-08-09 07:59:02,849 [myid:] - INFO  [SyncThread:0:ZooKeeperServer@617] - Established session 0x1566f2b19b50004 with negotiated timeout 20000 for client /176.126.247.73:40753
+2016-08-09 07:59:07,586 [myid:] - INFO  [ProcessThread(sid:0 cport:-1)::PrepRequestProcessor@645] - Got user-level KeeperException when processing sessionid:0x1566f2b19b50000 type:delete cxid:0x28 zxid:0x3d60 txntype:-1 reqpath:n/a Error Path:/admin/preferred_replica_election Error:KeeperErrorCode = NoNode for /admin/preferred_replica_election
+2016-08-09 07:59:07,802 [myid:] - INFO  [ProcessThread(sid:0 cport:-1)::PrepRequestProcessor@645] - Got user-level KeeperException when processing sessionid:0x1566f2b19b50000 type:create cxid:0x2f zxid:0x3d61 txntype:-1 reqpath:n/a Error Path:/brokers Error:KeeperErrorCode = NodeExists for /brokers
+2016-08-09 07:59:07,803 [myid:] - INFO  [ProcessThread(sid:0 cport:-1)::PrepRequestProcessor@645] - Got user-level KeeperException when processing sessionid:0x1566f2b19b50000 type:create cxid:0x30 zxid:0x3d62 txntype:-1 reqpath:n/a Error Path:/brokers/ids Error:KeeperErrorCode = NodeExists for /brokers/ids
