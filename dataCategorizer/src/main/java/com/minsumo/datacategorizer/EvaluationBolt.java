@@ -42,7 +42,7 @@ public class EvaluationBolt extends BaseRichBolt{
         if(latency){
             calculateLatency(tuple);
         }else{
-            calculateTroughput(tuple);
+            calculateThroughput(tuple);
         }
     }
 
@@ -65,10 +65,10 @@ public class EvaluationBolt extends BaseRichBolt{
         }
     }
 
-    private void calculateTroughput(Tuple tuple){
+    private void calculateThroughput(Tuple tuple){
         if (globalCounter == 2000){
             startTime = System.currentTimeMillis();
-            endTime = startTime + 1000;
+            endTime = startTime + 10000;
             System.out.println(" START TIME = " + startTime);
             System.out.println(" END TIME = " + endTime);
             globalCounter++;

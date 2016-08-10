@@ -41,7 +41,7 @@ public class CategorizingBolt extends BaseRichBolt {
 
     private final String KAFKA_SERVER = "localhost:9092";
     private OutputCollector collector;
-    private final double COVERAGE_AREA = 0.25;
+    private final double COVERAGE_AREA = 0.2;
     private RTree<String, Point> rsuTree;
     private String rsuString;
     private Producer<String, String> kafkaProducer;
@@ -74,8 +74,8 @@ public class CategorizingBolt extends BaseRichBolt {
         "longitude"
         "latitude"
         */
-        Double lon = Double.parseDouble(tuple.getString(3));
-        Double lat = Double.parseDouble(tuple.getString(4));
+        Double lon = Double.parseDouble(tuple.getStringByField("longitude"));
+        Double lat = Double.parseDouble(tuple.getStringByField("latitude"));
         Point vPoint = Point.create(lon, lat);
         List<Entry<String, Point>> rsuList = search(rsuTree, vPoint, COVERAGE_AREA).toList().toBlocking().single();
         String chosenRSU;
@@ -93,10 +93,9 @@ public class CategorizingBolt extends BaseRichBolt {
                 }
             }
             //kafkaProducer.send(new ProducerRecord<String, String>(chosenRSU, tuple.toString() ));
-            System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
+            //System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
         }
-	System.out.println("######################################## ZERO RSU ####################################################");
-        collector.emit(tuple, new Values(Long.parseLong(tuple.getStringByField("firstTimestamp")) ,System.currentTimeMillis()) );
+        collector.emit(tuple, new Values(Long.parseLong(tuple.getStringByField("firstTimestamp")) ,System.currentTimeMillis()));
     }
 
 

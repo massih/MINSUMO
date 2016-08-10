@@ -33,7 +33,8 @@ public class DCtopology {
         TopologyBuilder builder = new TopologyBuilder();
         Config conf = new Config();
         conf.setDebug(false);
-        conf.setMaxTaskParallelism(10);
+        //conf.setMaxTaskParallelism(1);
+        //conf.setNumWorkers(2);
 
         //KafkaConfig
         Broker broker = new Broker(KAFKA_HOST, KAFKA_PORT);
@@ -56,9 +57,9 @@ public class DCtopology {
         }
 
         //TOPOLOGY COMPONENTS
-        builder.setSpout(KAFKA_SPOUT, new KafkaSpout(spoutConfig), 100);
-        builder.setBolt(FILTERING_BOLT, new FilteringBolt(), 10).shuffleGrouping(KAFKA_SPOUT);
-        builder.setBolt(CATEGORIZING_BOLT, new CategorizingBolt(res), 2).shuffleGrouping(FILTERING_BOLT);
+        builder.setSpout(KAFKA_SPOUT, new KafkaSpout(spoutConfig), 2).setNumTasks(2);
+        builder.setBolt(FILTERING_BOLT, new FilteringBolt(), 2).setNumTasks(2).shuffleGrouping(KAFKA_SPOUT);
+        builder.setBolt(CATEGORIZING_BOLT, new CategorizingBolt(res), 1).setNumTasks(2).shuffleGrouping(FILTERING_BOLT);
         builder.setBolt(EVALUATION_BOLT, new EvaluationBolt(), 1).globalGrouping(CATEGORIZING_BOLT);
 
         LocalCluster cluster = new LocalCluster();
