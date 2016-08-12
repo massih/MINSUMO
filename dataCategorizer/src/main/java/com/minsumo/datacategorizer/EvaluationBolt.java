@@ -21,7 +21,7 @@ public class EvaluationBolt extends BaseRichBolt{
     private long endTime;
     private int globalCounter;
     private int counter;
-    private boolean latency = false;
+    private boolean latency = true;
     private final int AVERAGE_COUNTER = 1000;
 
     private static final Logger LOG = LoggerFactory.getLogger(EvaluationBolt.class);
@@ -56,7 +56,7 @@ public class EvaluationBolt extends BaseRichBolt{
                     averageLatency = averageLatency/AVERAGE_COUNTER;
                     System.out.println("%%%%%%%%%%%%%%%%The average latency for 1000 tuple is: "+ averageLatency + " %%%%%%%%%%%%%%%%");
                     counter = 0;
-                    averageLatency = -1;
+                    averageLatency = 0;
                 }
                 counter++;
             }
@@ -66,18 +66,18 @@ public class EvaluationBolt extends BaseRichBolt{
     }
 
     private void calculateThroughput(Tuple tuple){
-        if (globalCounter == 2000){
-            startTime = System.currentTimeMillis();
+        if (globalCounter == 5000){
+            startTime = System.currentTimeMillis()+10000;
             endTime = startTime + 10000;
             System.out.println(" START TIME = " + startTime);
             System.out.println(" END TIME = " + endTime);
             globalCounter++;
-        }else if(globalCounter > 2000) {
+        }else if(globalCounter > 5000) {
             if(tuple.getLongByField("firstTimestamp") >= startTime && tuple.getLongByField("secondTimestamp") <= endTime){
                 counter ++;
-                System.out.println(counter + " tuples processed in 1 second");
+                System.out.println(counter/10 + " tuples processed in 1 second");
             }
-        }else if(globalCounter < 2000){
+        }else if(globalCounter < 5000){
             globalCounter++;
         }
     }
