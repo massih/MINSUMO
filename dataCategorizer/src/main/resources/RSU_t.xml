@@ -1,303 +1,301 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="cd_catalog.css"?>
 <rsus>
 	<rsu>
 		<id>1</id>
-		<latitude>51.0100084</latitude>
-		<longitude>6.73597864</longitude>
+		<latitude>41.917787</latitude>
+		<longitude>-87.677641</longitude>
 	</rsu>
 
 	<rsu>
 		<id>2</id>
-		<latitude>51.02626009</latitude>
-		<longitude>6.98767324</longitude>
+		<latitude>41.917675</latitude>
+		<longitude>-87.682524</longitude>
 	</rsu>
 
 	<rsu>
 		<id>3</id>
-		<latitude>50.94618885</latitude>
-		<longitude>7.12298081</longitude>
+		<latitude>41.917584</latitude>
+		<longitude>-87.687463</longitude>
 	</rsu>
 
 	<rsu>
 		<id>4</id>
-		<latitude>50.88131</latitude>
-		<longitude>7.09178399</longitude>
+		<latitude>41.917534</latitude>
+		<longitude>-87.692291</longitude>
 	</rsu>
 
 	<rsu>
 		<id>5</id>
-		<latitude>50.9555687</latitude>
-		<longitude>6.93085455</longitude>
+		<latitude>41.917504</latitude>
+		<longitude>-87.697230</longitude>
 	</rsu>
 
 	<rsu>
 		<id>6</id>
-		<latitude>50.99130208</latitude>
-		<longitude>6.73193583</longitude>
+		<latitude>41.917454</latitude>
+		<longitude>-87.702114</longitude>
 	</rsu>
 
 	<rsu>
 		<id>7</id>
-		<latitude>50.86132842</latitude>
-		<longitude>6.98977094</longitude>
+		<latitude>41.917403</latitude>
+		<longitude>-87.706998</longitude>
 	</rsu>
 
 	<rsu>
 		<id>8</id>
-		<latitude>50.89773275</latitude>
-		<longitude>6.86792613</longitude>
+		<latitude>41.917352</latitude>
+		<longitude>-87.711909</longitude>
 	</rsu>
 
 	<rsu>
 		<id>9</id>
-		<latitude>50.97281475</latitude>
-		<longitude>6.79910702</longitude>
+		<latitude>41.917301</latitude>
+		<longitude>-87.716793</longitude>
 	</rsu>
 
 	<rsu>
 		<id>10</id>
-		<latitude>50.91488588</latitude>
-		<longitude>6.92632055</longitude>
+		<latitude>41.917178</latitude>
+		<longitude>-87.726560</longitude>
 	</rsu>
 
 	<rsu>
 		<id>11</id>
-		<latitude>50.77471684</latitude>
-		<longitude>6.91747583</longitude>
+		<latitude>41.913998</latitude>
+		<longitude>-87.687341</longitude>
 	</rsu>
 
 	<rsu>
 		<id>12</id>
-		<latitude>50.84794132</latitude>
-		<longitude>6.75514159</longitude>
+		<latitude>41.913949</latitude>
+		<longitude>-87.692197</longitude>
 	</rsu>
 
 	<rsu>
 		<id>13</id>
-		<latitude>50.97190111</latitude>
-		<longitude>7.03305129</longitude>
+		<latitude>41.913898</latitude>
+		<longitude>-87.697108</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>14</id>
-		<latitude>50.91323747</latitude>
-		<longitude>6.81838665</longitude>
+		<latitude>41.913848</latitude>
+		<longitude>-87.702019</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>15</id>
-		<latitude>50.8192769</latitude>
-		<longitude>6.80388511</longitude>
+		<latitude>41.913756</latitude>
+		<longitude>-87.706875</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>16</id>
-		<latitude>51.05993938</latitude>
-		<longitude>6.98767204</longitude>
+		<latitude>41.913623</latitude>
+		<longitude>-87.711785</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>17</id>
-		<latitude>51.00712257</latitude>
-		<longitude>7.11249071</longitude>
+		<latitude>41.912165</latitude>
+		<longitude>-87.687266</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>18</id>
-		<latitude>50.94419683</latitude>
-		<longitude>6.77549813</longitude>
+		<latitude>41.912135</latitude>
+		<longitude>-87.692150</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>19</id>
-		<latitude>50.84898619</latitude>
-		<longitude>7.07857459</longitude>
+		<latitude>41.912229</latitude>
+		<longitude>-87.697063</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>20</id>
-		<latitude>51.07237913</latitude>
-		<longitude>7.00349701</longitude>
+		<latitude>41.912158</latitude>
+		<longitude>-87.701946</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>21</id>
-		<latitude>51.01491825</latitude>
-		<longitude>6.72879226</longitude>
+		<latitude>41.911963</latitude>
+		<longitude>-87.706827</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>22</id>
-		<latitude>50.81389731</latitude>
-		<longitude>7.0064707</longitude>
+		<latitude>41.911841</latitude>
+		<longitude>-87.716594</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>23</id>
-		<latitude>50.99496138</latitude>
-		<longitude>6.92778799</longitude>
+		<latitude>41.911738</latitude>
+		<longitude>-87.726416</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>24</id>
-		<latitude>50.86484832</latitude>
-		<longitude>6.72071983</longitude>
+		<latitude>41.890119</latitude>
+		<longitude>-87.706449</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>25</id>
-		<latitude>50.93069459</latitude>
-		<longitude>6.96715281</longitude>
+		<latitude>41.910492</latitude>
+		<longitude>-87.677453</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>26</id>
-		<latitude>51.08083117</latitude>
-		<longitude>6.87893048</longitude>
+		<latitude>41.910351</latitude>
+		<longitude>-87.687219</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>27</id>
-		<latitude>50.97359208</latitude>
-		<longitude>6.79038927</longitude>
+		<latitude>41.910251</latitude>
+		<longitude>-87.697041</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>28</id>
-		<latitude>50.80518144</latitude>
-		<longitude>6.96155669</longitude>
+		<latitude>41.910180</latitude>
+		<longitude>-87.701924</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>29</id>
-		<latitude>50.95865686</latitude>
-		<longitude>6.98812684</longitude>
+		<latitude>41.910149</latitude>
+		<longitude>-87.706890</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>30</id>
-		<latitude>50.91317735</latitude>
-		<longitude>6.70606654</longitude>
+		<latitude>41.910006</latitude>
+		<longitude>-87.716684</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>31</id>
-		<latitude>50.9555142</latitude>
-		<longitude>6.93226097</longitude>
+		<latitude>41.909884</latitude>
+		<longitude>-87.726339</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>32</id>
-		<latitude>50.96695947</latitude>
-		<longitude>6.91284272</longitude>
+		<latitude>41.903176</latitude>
+		<longitude>-87.677266</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>33</id>
-		<latitude>50.97746659</latitude>
-		<longitude>6.95206109</longitude>
+		<latitude>41.903056</latitude>
+		<longitude>-87.687031</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>34</id>
-		<latitude>51.00702067</latitude>
-		<longitude>6.78251669</longitude>
+		<latitude>41.902976</latitude>
+		<longitude>-87.696962</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>35</id>
-		<latitude>50.9129992</latitude>
-		<longitude>7.03304956</longitude>
+		<latitude>41.902881</latitude>
+		<longitude>-87.702341</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>36</id>
-		<latitude>50.78175665</latitude>
-		<longitude>6.92206494</longitude>
+		<latitude>41.902854</latitude>
+		<longitude>-87.706810</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>37</id>
-		<latitude>50.96859053</latitude>
-		<longitude>7.22080644</longitude>
+		<latitude>41.902782</latitude>
+		<longitude>-87.711665</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>38</id>
-		<latitude>50.97104417</latitude>
-		<longitude>7.1026115</longitude>
+		<latitude>41.902773</latitude>
+		<longitude>-87.716548</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>39</id>
-		<latitude>51.0162016</latitude>
-		<longitude>6.75749291</longitude>
+		<latitude>41.902742</latitude>
+		<longitude>-87.721430</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>40</id>
-		<latitude>50.99781609</latitude>
-		<longitude>7.21768896</longitude>
+		<latitude>41.902732</latitude>
+		<longitude>-87.726286</longitude>
 	</rsu>
 
 	<rsu>
 		<id>41</id>
-		<latitude>50.99394972</latitude>
-		<longitude>7.15201721</longitude>
+		<latitude>41.895943</latitude>
+		<longitude>-87.677079</longitude>
 	</rsu>
 
 	<rsu>
 		<id>42</id>
-		<latitude>50.92276238</latitude>
-		<longitude>7.13594832</longitude>
+		<latitude>41.895761</latitude>
+		<longitude>-87.686870</longitude>
 	</rsu>
 
 	<rsu>
 		<id>43</id>
-		<latitude>50.94850108</latitude>
-		<longitude>7.12049857</longitude>
+		<latitude>41.895681</latitude>
+		<longitude>-87.696717</longitude>
 	</rsu>
 	
 	<rsu>
 		<id>44</id>
-		<latitude>50.95734249</latitude>
-		<longitude>6.79481517</longitude>
+		<latitude>41.895627</latitude>
+		<longitude>-87.702206</longitude>
 	</rsu>
 
 	<rsu>
 		<id>45</id>
-		<latitude>50.92295604</latitude>
-		<longitude>6.75294258</longitude>
+		<latitude>41.895579</latitude>
+		<longitude>-87.706619</longitude>
 	</rsu>
 
 	<rsu>
 		<id>46</id>
-		<latitude>51.00234002</latitude>
-		<longitude>6.84769913</longitude>
+		<latitude>41.895493</latitude>
+		<longitude>-87.713901</longitude>
 	</rsu>
 
 	<rsu>
 		<id>47</id>
-		<latitude>50.92183228</latitude>
-		<longitude>6.93399575</longitude>
+		<latitude>41.895443</latitude>
+		<longitude>-87.718562</longitude>
 	</rsu>
 
 	<rsu>
 		<id>48</id>
-		<latitude>51.01737294</latitude>
-		<longitude>6.76642805</longitude>
+		<latitude>41.895396</latitude>
+		<longitude>-87.726092</longitude>
 	</rsu>
 
 	<rsu>
 		<id>49</id>
-		<latitude>51.09840391</latitude>
-		<longitude>7.04474161</longitude>
+		<latitude>41.890915</latitude>
+		<longitude>-87.676915</longitude>
 	</rsu>
 
 	<rsu>
 		<id>50</id>
-		<latitude>50.94972925</latitude>
-		<longitude>7.09228573</longitude>
+		<latitude>41.890712</latitude>
+		<longitude>-87.686733</longitude>
 	</rsu>
 </rsus>
