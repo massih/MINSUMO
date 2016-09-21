@@ -44,3 +44,5 @@ stormTest
 #Error logs
 hs_err*.log
 
+#.idea
+.idea

@@ -78,7 +78,7 @@ public class CategorizingBolt extends BaseRichBolt {
         Double lat = Double.parseDouble(tuple.getStringByField("latitude"));
         Point vPoint = Point.create(lon, lat);
         List<Entry<String, Point>> rsuList = search(rsuTree, vPoint, COVERAGE_AREA).toList().toBlocking().single();
-        String chosenRSU;
+        String chosenRSU = "";
         if (rsuList.size() > 0){
             chosenRSU = rsuList.get(0).value();
             if (rsuList.size() > 1){
@@ -95,7 +95,9 @@ public class CategorizingBolt extends BaseRichBolt {
             //kafkaProducer.send(new ProducerRecord<String, String>(chosenRSU, tuple.toString() ));
             //System.out.println("*******number of Found RSU: " + rsuList.size() + " chosen one:"+ chosenRSU + " *******");
         }
-        collector.emit(tuple, new Values(Long.parseLong(tuple.getStringByField("firstTimestamp")) ,System.currentTimeMillis()));
+        String result = tuple.getStringByField("firstTimestamp") + ";" + String.valueOf(System.currentTimeMillis());
+        kafkaProducer.send(new ProducerRecord<String, String>("toEvaluate", result ));
+        //collector.emit(tuple, new Values(Long.parseLong(tuple.getStringByField("firstTimestamp")) ,System.currentTimeMillis()) );
     }
 
 
