@@ -42,21 +42,33 @@ public class FilteringBolt extends BaseRichBolt{
 
     @Override
     public void execute(Tuple tuple) {
-        String tupleString = "<root>" + tuple.getString(0) + "</root>";
+        String tupleString = tuple.getString(0);
+        System.out.println(tupleString);
         try {
             parser.parse(new InputSource(new StringReader(tupleString)));
             Document xmlDoc = parser.getDocument();
-            NodeList timeSteps = xmlDoc.getElementsByTagName("timestep");
-            for (int i=0; i < timeSteps.getLength();i++) {
-                Element timeStep = (Element) timeSteps.item(i);
-                String firstTimestamp = timeStep.getAttribute("firstTimestamp");
-                String timeStepValue = timeStep.getAttribute("time");
-                NodeList vehicles = timeStep.getElementsByTagName("vehicle");
-                for ( int j=0; j < vehicles.getLength(); j++) {
-                    Element vehicle = (Element) vehicles.item(j);
-                    collector.emit(new Values(timeStepValue,firstTimestamp ,vehicle.getAttribute("id") , vehicle.getAttribute("speed") , vehicle.getAttribute("x"), vehicle.getAttribute("y")));
-                    collector.ack(tuple);
-                }
+            NodeList vehicle = xmlDoc.getElementsByTagName("vehicle");
+            for (int i=0; i < vehicle.getLength();i++) {
+                Element vehicleData = (Element) vehicle.item(i);
+                /*
+                System.out.println(
+                        "id: " + vehicleData.getAttribute("id") +
+                        " firstTimeStamp: " + vehicleData.getAttribute("firstTimestamp") +
+                        " Speed: " + vehicleData.getAttribute("speed") +
+                        " X: " + vehicleData.getAttribute("x") +
+                        " Y: " + vehicleData.getAttribute("y"));
+                */
+                collector.emit(
+                        new Values(
+                        vehicleData.getAttribute("firstTimestamp"),
+                        vehicleData.getAttribute("id"),
+                        vehicleData.getAttribute("speed"),
+                        vehicleData.getAttribute("x"),
+                        vehicleData.getAttribute("y")
+                        )
+                );
+
+                collector.ack(tuple);
             }
         } catch (SAXException | IOException e) {
             e.printStackTrace();

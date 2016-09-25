@@ -7,28 +7,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
+
 import java.io.InputStreamReader;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Properties;
 
-/**
- * Created by massih on 4/11/16.
- */
-public class DataHandler {
+
+public class DataHandler
+{
 
     private final String KAFKA_SERVER = "localhost:9092";
     private int sumoPort;
     private Producer<String, String> producer;
     private static final Logger LOG = LoggerFactory.getLogger(DataHandler.class);
 
-    public DataHandler(int port) throws Exception {
+    public DataHandler(int port) throws Exception
+    {
         sumoPort = port;
         kafkaSetup();
         receiveVehicleData();
     }
 
-    private void kafkaSetup(){
+    private void kafkaSetup () {
         Properties props = new Properties();
         props.put("bootstrap.servers", KAFKA_SERVER);
         props.put("acks", "0");
@@ -43,35 +45,29 @@ public class DataHandler {
 
     private void receiveVehicleData() throws Exception {
         ServerSocket serverSocket = new ServerSocket(sumoPort);
-        System.out.println("Waiting :-D");
+
+        System.out.println("Waiting for Sumo");
         Socket socket = serverSocket.accept();
-        System.out.println("connected :-)");
+        System.out.println("Sumo is connected");
+
         BufferedReader buffReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        boolean inElement = false;
-        String element = "";
         String temp;
-        while (true){
+
+        while (true) {
             temp = buffReader.readLine();
-            if(temp != null){
+            if(temp != null) {
                 temp = temp.trim();
-                if(inElement){
-                    element += temp;
-                    if (temp.startsWith("</timestep>")){
-                        producer.send(new ProducerRecord<String, String>("unprocessed", element ) );
-                        inElement = false;
-                        element = "";
-                    }
-                }else {
-                    if (temp.startsWith("<timestep")){
-                        String firstPart = temp.substring(0,9);
-                        String secondPart = temp.substring(9);
-                        element = firstPart + " firstTimestamp=\"" + System.currentTimeMillis() + "\"" + secondPart;
-                        inElement = true;
-                    }
+                if(temp.startsWith("<vehicle")) {
+                    String firstPart = temp.substring(0, 8);
+                    String secondPart = temp.substring(8);
+                    String vehicleTuple = firstPart +
+                            " firstTimestamp=\"" +
+                            System.currentTimeMillis() +
+                            "\" " +
+                            secondPart;
+                    producer.send(new ProducerRecord<String, String>("unprocessed", vehicleTuple));
                 }
             }
-
         }
-        //producer.close();
     }
 }
