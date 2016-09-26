@@ -43,7 +43,6 @@ public class FilteringBolt extends BaseRichBolt{
     @Override
     public void execute(Tuple tuple) {
         String tupleString = tuple.getString(0);
-        System.out.println(tupleString);
         try {
             parser.parse(new InputSource(new StringReader(tupleString)));
             Document xmlDoc = parser.getDocument();
@@ -77,7 +76,7 @@ public class FilteringBolt extends BaseRichBolt{
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(new Fields("timeStep","firstTimestamp","vehicleID","speed", "longitude","latitude"));
+        declarer.declare(new Fields("firstTimestamp","vehicleID","speed", "longitude","latitude"));
     }
 
 }

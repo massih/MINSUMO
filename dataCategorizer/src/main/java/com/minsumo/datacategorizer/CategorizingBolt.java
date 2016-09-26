@@ -68,7 +68,6 @@ public class CategorizingBolt extends BaseRichBolt {
     @Override
     public void execute(Tuple tuple) {
         /*
-        "timeStep"
         "vehicleID"
         "speed"
         "longitude"
