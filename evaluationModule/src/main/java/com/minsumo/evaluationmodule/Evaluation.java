@@ -29,8 +29,8 @@ public class Evaluation {
         while (true){
             ConsumerRecords<String, String> records = consumer.poll(100);
             for (ConsumerRecord<String, String> record : records)
-                calculateLatency(parseTuple(record.value()));
-                //calculateThroughput(parseTuple(record.value()));
+                //calculateLatency(parseTuple(record.value()));
+                calculateThroughput(parseTuple(record.value()));
             //System.out.printf("offset = %d, key = %s, value = %s", record.offset(), record.key(), record.value());
             //calculateLatency(record.value());
         }
@@ -75,7 +75,9 @@ public class Evaluation {
 
     private void calculateThroughput(Long[] TS){
         if (globalCounter == 5000){
-            startTime = System.currentTimeMillis()+10000;
+            System.out.println("CURRENT TIME = " + System.currentTimeMillis());
+            //startTime = System.currentTimeMillis()+10000;
+            startTime = TS[0]+10000;
             endTime = startTime + 10000;
             System.out.println(" START TIME = " + startTime);
             System.out.println(" END TIME = " + endTime);

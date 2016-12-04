@@ -117,7 +117,7 @@ public class CategorizingBolt extends BaseRichBolt {
         props.put("buffer.memory", 33554432);
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("delete.topic.enable", "true");
+        //props.put("delete.topic.enable", "true");
         kafkaProducer = new KafkaProducer<>(props);
     }
 

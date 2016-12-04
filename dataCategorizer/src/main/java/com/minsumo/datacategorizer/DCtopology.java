@@ -26,7 +26,7 @@ public class DCtopology {
     private final static String FILTERING_BOLT          = "filteringBolt";
     private final static String CATEGORIZING_BOLT       = "categorizingBolt";
     private final static String EVALUATION_BOLT         = "evaluationBolt";
-    private final static String ZK_ROOT                 = "/brokers";
+    private final static String ZK_ROOT                 = "";
     private final static String rsuFile                 = "RSU_t.xml";
 
     public static void main(String args[]) throws IOException {
